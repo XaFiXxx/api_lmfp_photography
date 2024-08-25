@@ -17,9 +17,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'firstname',
+        'lastname',
+        'avatar',
+        'birthday',
+        'status',
         'email',
         'password',
+        'isAdmin',
+        'role',
     ];
 
     /**
@@ -41,6 +47,8 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'isAdmin' => 'boolean',
+            'birthday' => 'date',
             'password' => 'hashed',
         ];
     }
