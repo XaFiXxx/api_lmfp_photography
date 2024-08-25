@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('gallery', function (Blueprint $table) {
             $table->id();  // Clé primaire auto-incrémentée
-            $table->string('name');  // Nom de la catégorie
+            $table->string('picture');  // URL ou chemin de l'image
+            $table->foreignId('post_id')->constrained('posts')->onDelete('cascade');  // Clé étrangère vers la table posts
             $table->timestamps();  // Colonnes created_at et updated_at
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');  // Supprime la table categories
+        Schema::dropIfExists('gallery');  // Supprime la table gallery
     }
 };
